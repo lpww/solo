@@ -1,34 +1,41 @@
 var app = {
   left: {
-    deck: document.getElementById("leftDeck"),
-    rate: document.getElementById("leftRate"),
-    currentRate: document.getElementById("currentLeftRate")
+    deck: document.getElementById('leftDeck'),
+    rate: document.getElementById('leftRate'),
+    currentRate: document.getElementById('currentLeftRate'),
   },
   right: {
-    deck: document.getElementById("rightDeck"),
-    rate: document.getElementById("rightRate"),
-    currentRate: document.getElementById("currentRightRate")
-  }
+    deck: document.getElementById('rightDeck'),
+    rate: document.getElementById('rightRate'),
+    currentRate: document.getElementById('currentRightRate'),
+  },
+  fader: document.getElementById('fader')
 };
 
-var loadListeners = function() {
+var loadListeners = function(deck) {
   var left = app.left;
-  left.rate.addEventListener('input',function(){
+  var right = app.right;
+
+  left.rate.addEventListener('input', function() {
     left.currentRate.innerHTML = left.rate.value;
     left.deck.playbackRate = left.rate.value;
-  },false);
+  }, false);
 
-  var right = app.right;
-  right.rate.addEventListener('input',function(){
+  right.rate.addEventListener('input', function() {
     right.currentRate.innerHTML = right.rate.value;
     right.deck.playbackRate = right.rate.value;
-  },false);
-}
+  }, false);
+
+  app.fader.addEventListener('input', function() {
+    left.deck.volume = app.fader.value;
+    right.deck.volume = 1-app.fader.value;
+  }, false);
+};
+
 window.onload = function () {
   loadListeners();
 };
 
-window.
 videos = document.querySelectorAll("video");
 for (var i = 0, l = videos.length; i < l; i++) {
     var video = videos[i];
