@@ -3,13 +3,23 @@ var app = {
     deck: document.getElementById('leftDeck'),
     rate: document.getElementById('leftRate'),
     currentRate: document.getElementById('currentLeftRate'),
-    form: document.getElementById('leftForm')
+    form: document.getElementById('leftForm'),
+    eq: {
+      high: document.getElementById('leftHigh'),
+      mid: document.getElementById('leftMid'),
+      low: document.getElementById('leftLow')
+    }
   },
   right: {
     deck: document.getElementById('rightDeck'),
     rate: document.getElementById('rightRate'),
     currentRate: document.getElementById('currentRightRate'),
-    form: document.getElementById('rightForm')
+    form: document.getElementById('rightForm'),
+    eq: {
+      high: document.getElementById('rightHigh'),
+      mid: document.getElementById('rightMid'),
+      low: document.getElementById('rightLow')
+    }
   },
   fader: document.getElementById('fader')
 };
@@ -24,6 +34,8 @@ var loadListeners = function(deck) {
   var left = app.left;
   var right = app.right;
 
+  //Pitch fader listeners
+
   left.rate.addEventListener('input', function() {
     left.currentRate.innerHTML = left.rate.value;
     left.deck.playbackRate = left.rate.value;
@@ -34,27 +46,61 @@ var loadListeners = function(deck) {
     right.deck.playbackRate = right.rate.value;
   }, false);
 
+  //Cross fader listener
+
   app.fader.addEventListener('input', function() {
-    left.deck.volume = app.fader.value;
-    right.deck.volume = 1-app.fader.value;
+    left.source.gainNode.gain.value = 1-app.fader.value;
+    right.source.gainNode.gain.value = app.fader.value;
   }, false);
+
+  //Song select listeners
 
   left.form.addEventListener("submit", function(e) {
     var form = document.getElementById('leftForm');
     var input = document.querySelector('#leftQueue');
-    redirect(app.left.deck, input.value);
+    convert(app.left.deck, input.value);
     form.reset();
   }, false); 
 
   right.form.addEventListener("submit", function() {
     var form = document.getElementById('rightForm');
     var input = document.querySelector('#rightQueue');
-    redirect(app.right.deck, input.value);
+    convert(app.right.deck, input.value);
     form.reset();
   }, false); 
+
+  //EQ listeners left
+  left.eq.high.addEventListener('input', function() {
+    var input = document.querySelector('#leftHigh');
+    left.source.highFilter.gain.value = input.value-40;
+  });
+  left.eq.mid.addEventListener('input', function() {
+    var input = document.querySelector('#leftMid');
+    left.source.midFilter.gain.value = input.value-40;
+  });
+  left.eq.low.addEventListener('input', function() {
+    var input = document.querySelector('#leftLow');
+    left.source.lowFilter.gain.value = input.value-40;
+    console.log(left.source.lowFilter.gain.value);
+  });
+
+  //eq listners right
+  right.eq.high.addEventListener('input', function() {
+    var input = document.querySelector('#rightHigh');
+    right.source.highFilter.gain.value = input.value-40;
+  });
+  right.eq.mid.addEventListener('input', function() {
+    var input = document.querySelector('#rightMid');
+    right.source.midFilter.gain.value = input.value-40;
+  });
+  right.eq.low.addEventListener('input', function() {
+    var input = document.querySelector('#rightLow');
+    right.source.lowFilter.gain.value = input.value-40;
+    console.log(right.source.lowFilter.gain.value);
+  });
 };
 
-var redirect = function(deck, src) {
+var convert = function(deck, src) {
   var isYoutube = src && src.match(/(?:youtu|youtube)(?:\.com|\.be)\/([\w\W]+)/i);
   if (isYoutube) {
     console.log(isYoutube);
@@ -69,28 +115,3 @@ var redirect = function(deck, src) {
 window.onload = function () {
   loadListeners();
 };
-
-// videos = document.querySelectorAll("video");
-// for (var i = 0, l = videos.length; i < l; i++) {
-//     var video = videos[i];
-//     var src = video.src || (function () {
-//         var sources = video.querySelectorAll("source");
-//         for (var j = 0, sl = sources.length; j < sl; j++) {
-//             var source = sources[j];
-//             var type = source.type;
-//             var isMp4 = type.indexOf("mp4") != -1;
-//             if (isMp4) return source.src;
-//         }
-//         return null;
-//     })();
-//     if (src) {
-//         var isYoutube = src && src.match(/(?:youtu|youtube)(?:\.com|\.be)\/([\w\W]+)/i);
-//         if (isYoutube) {
-//             var id = isYoutube[1].match(/watch\?v=|[\w\W]+/gi);
-//             id = (id.length > 1) ? id.splice(1) : id;
-//             id = id.toString();
-//             var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
-//             video.src = mp4url + id;
-//         }
-//     }
-// }

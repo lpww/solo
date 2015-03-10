@@ -13,6 +13,7 @@
 
 <body>
   <h1>Pitch Rider</h1>
+    <pre></pre>
 
   <div class="table">
 
@@ -36,17 +37,45 @@
       max="1.08" 
       step="0.001" >
       <p>Pitch
-      	<span id="currentLeftRate">1</span>
+        <span id="currentLeftRate">1</span>
       </p>
     </form>
       
     <audio id="leftDeck" controls="true" width="300px" height="300px">
-    	<source src="" type="audio/mp4">
+      <source src="http://www.youtube-mp3.org/get?video_id=pz8Kp_yELg0&ts_create=1426017111&r=MTczLjI0Ny4xOTkuNDY%3D&h2=41545220eb1c0ba6a62f9c4d3b55d142&s=44124" type="audio/mp4">
     </audio>
 
     <!-- Mixer -->
 
+    <form id="leftEq">
+      <p>High</p>
+      <input
+        id="leftHigh"
+        type="range"
+        value="40"
+        mix="0"
+        max="80"
+        step="0.5">
+        <p>Mid</p>
+      <input
+        id="leftMid"
+        type="range"
+        value="40"
+        mix="0"
+        max="80"
+        step="0.5">
+        <p>Low</p>
+      <input
+        id="leftLow"
+        type="range"
+        value="40"
+        mix="0"
+        max="80"
+        step="0.5">
+    </form>
+
     <form>
+      <p>Cross Fader</p>
       <input 
       id="fader" 
       type="range" 
@@ -54,8 +83,35 @@
       min="0" 
       max="1" 
       step="0.005" >
-      <p>Cross Fader</p>
     </form>
+
+    <form id="RightEq">
+      <p>High</p>
+      <input
+        id="rightHigh"
+        type="range"
+        value="40"
+        mix="0"
+        max="80"
+        step="0.5">
+        <p>Mid</p>
+      <input
+        id="rightMid"
+        type="range"
+        value="40"
+        mix="0"
+        max="80"
+        step="0.5">
+        <p>Low</p>
+      <input
+        id="rightLow"
+        type="range"
+        value="40"
+        mix="0"
+        max="80"
+        step="0.5">
+    </form>
+
 
     <!-- Right Deck -->
 
@@ -69,7 +125,7 @@
     </form>
 
     <audio id="rightDeck" controls="true" width="300px" height="300px">
-    	<source src="" type="audio/mp4">
+    	<source src="http://www.youtube-mp3.org/get?video_id=pz8Kp_yELg0&ts_create=1426017111&r=MTczLjI0Ny4xOTkuNDY%3D&h2=41545220eb1c0ba6a62f9c4d3b55d142&s=44124" type="audio/mp4">
     </audio>
 
     <form>
@@ -86,6 +142,7 @@
     </form>
   </div>
   <script src="js/app.js"></script>
+  <script src="js/audio.js"></script>
 </body>
 
 </html>
