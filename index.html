@@ -15,8 +15,17 @@
   <h1>Pitch Rider</h1>
 
   <div class="table">
-    
+
   <!-- Left Deck -->
+
+    <form id="leftForm" onSubmit="return false">
+      <input 
+      id="leftQueue" 
+      type="text" 
+      value="Paste a YouTube link here!" 
+      onfocus="emptySearch(this)">
+      <p>Pick a song</p>
+    </form>
 
     <form>
       <input 
@@ -32,7 +41,7 @@
     </form>
       
     <video id="leftDeck" controls="true" width="300px" height="300px">
-    	<source src="http://youtu.be/N4_dzevyFK8" type="video/mp4">
+    	<source src="" type="video/mp4">
     </video>
 
     <!-- Mixer -->
@@ -50,8 +59,17 @@
 
     <!-- Right Deck -->
 
+    <form id="rightForm" onSubmit="return false">
+      <input 
+      id="rightQueue" 
+      type="text" 
+      value="Paste a YouTube link here!" 
+      onfocus="emptySearch(this)">
+      <p>Pick a song</p>
+    </form>
+
     <video id="rightDeck" controls="true" width="300px" height="300px">
-    	<source src="https://www.youtube.com/watch?v=CSw9XC61Y24" type="video/mp4">
+    	<source src="" type="video/mp4">
     </video>
 
     <form>
