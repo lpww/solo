@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html ng-app='mc' lang="en">
+<html lang="en">
 <head>
   <meta charset="utf-8">
 
@@ -56,9 +56,17 @@
         mix="0"
         max="80"
         step="0.5">
-        <p>Mid</p>
+        <p>High Mid</p>
       <input
-        id="leftMid"
+        id="leftHighMid"
+        type="range"
+        value="40"
+        mix="0"
+        max="80"
+        step="0.5">
+      <p>Low Mid</p>
+      <input
+        id="leftLowMid"
         type="range"
         value="40"
         mix="0"
@@ -94,9 +102,17 @@
         mix="0"
         max="80"
         step="0.5">
-        <p>Mid</p>
+        <p>High Mid</p>
       <input
-        id="rightMid"
+        id="rightHighMid"
+        type="range"
+        value="40"
+        mix="0"
+        max="80"
+        step="0.5">
+      <p>Low Mid</p>
+      <input
+        id="rightLowMid"
         type="range"
         value="40"
         mix="0"
@@ -134,7 +150,7 @@
       type="range" 
       value="1" 
       min="0.92"
-      max="1.08" 
+      max=".08" 
       step="0.005" >
       <p>Pitch
         <span id="currentRightRate">1</span>

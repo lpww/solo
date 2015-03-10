@@ -6,7 +6,8 @@ var app = {
     form: document.getElementById('leftForm'),
     eq: {
       high: document.getElementById('leftHigh'),
-      mid: document.getElementById('leftMid'),
+      highmid: document.getElementById('leftHighMid'),
+      lowmid: document.getElementById('leftLowMid'),
       low: document.getElementById('leftLow')
     }
   },
@@ -17,7 +18,8 @@ var app = {
     form: document.getElementById('rightForm'),
     eq: {
       high: document.getElementById('rightHigh'),
-      mid: document.getElementById('rightMid'),
+      highmid: document.getElementById('rightHighMid'),
+      lowmid: document.getElementById('rightLowMid'),
       low: document.getElementById('rightLow')
     }
   },
@@ -78,9 +80,13 @@ var loadListeners = function(deck) {
     var input = document.querySelector('#leftHigh');
     left.source.highFilter.gain.value = input.value-40;
   });
-  left.eq.mid.addEventListener('input', function() {
-    var input = document.querySelector('#leftMid');
-    left.source.midFilter.gain.value = input.value-40;
+  left.eq.highmid.addEventListener('input', function() {
+    var input = document.querySelector('#leftHighMid');
+    left.source.highmidFilter.gain.value = input.value-40;
+  });
+    left.eq.lowmid.addEventListener('input', function() {
+    var input = document.querySelector('#leftLowMid');
+    left.source.lowmidFilter.gain.value = input.value-40;
   });
   left.eq.low.addEventListener('input', function() {
     var input = document.querySelector('#leftLow');
@@ -93,9 +99,13 @@ var loadListeners = function(deck) {
     var input = document.querySelector('#rightHigh');
     right.source.highFilter.gain.value = input.value-40;
   });
-  right.eq.mid.addEventListener('input', function() {
-    var input = document.querySelector('#rightMid');
-    right.source.midFilter.gain.value = input.value-40;
+  right.eq.highmid.addEventListener('input', function() {
+    var input = document.querySelector('#rightHighMid');
+    right.source.highmidFilter.gain.value = input.value-40;
+  });
+    right.eq.lowmid.addEventListener('input', function() {
+    var input = document.querySelector('#rightLowMid');
+    right.source.lowmidFilter.gain.value = input.value-40;
   });
   right.eq.low.addEventListener('input', function() {
     var input = document.querySelector('#rightLow');
