@@ -49,8 +49,12 @@ var loadListeners = function(deck) {
   //Cross fader listener
 
   app.fader.addEventListener('input', function() {
-    left.source.gainNode.gain.value = 1-app.fader.value;
-    right.source.gainNode.gain.value = app.fader.value;
+    var x = app.fader.value / app.fader.max;
+    // Use an equal-power crossfading curve:
+    var gain1 = Math.cos(x * 0.5*Math.PI);
+    var gain2 = Math.cos((1.0 - x) * 0.5*Math.PI);
+    left.source.gainNode.gain.value = gain1;
+    right.source.gainNode.gain.value = gain2;
   }, false);
 
   //Song select listeners
