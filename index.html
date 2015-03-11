@@ -1,87 +1,140 @@
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
   <title>Pitch Rider</title>
   <meta name="description" content="Learn to ride the pitch">
-
   <link rel="stylesheet" href="./css/style.css">
-
 </head>
-
 <body>
-  <h1>Pitch Rider</h1>
-    <pre></pre>
+  <h1>Dj Sim 2000</h1>
 
-  <div class="table">
+  <div class="left"></div>
 
-  <!-- Left Deck -->
+    <div class="leftDeck">
+      <form id="leftForm" onSubmit="return false">
+        <input 
+        id="leftQueue" 
+        type="text" 
+        value="Paste a YouTube link here!" 
+        onfocus="emptySearch(this)"
+        class="song">
+      </form>
 
-    <form id="leftForm" onSubmit="return false">
-      <input 
-      id="leftQueue" 
-      type="text" 
-      value="Paste a YouTube link here!" 
-      onfocus="emptySearch(this)">
-      <p>Pick a song</p>
-    </form>
+      <audio id="leftDeck" controls="true" width="300px" height="300px">
+        <source src="http://www.youtube-mp3.org/get?video_id=7JspYHmlLyk&ts_create=1426033179&r=MTczLjI0Ny4xOTkuNDY%3D&h2=ede6b198a0c28e467954f8393e84d88c&s=41381" type="audio/mp4">
+      </audio>
+    </div>
 
-    <form>
-      <input 
-      id="leftRate" 
-      type="range" 
-      value="1" 
-      min="0.92" 
-      max="1.08" 
-      step="0.001" >
-      <p>Pitch
-        <span id="currentLeftRate">1</span>
-      </p>
-    </form>
-      
-    <audio id="leftDeck" controls="true" width="300px" height="300px">
-      <source src="http://www.youtube-mp3.org/get?video_id=pz8Kp_yELg0&ts_create=1426017111&r=MTczLjI0Ny4xOTkuNDY%3D&h2=41545220eb1c0ba6a62f9c4d3b55d142&s=44124" type="audio/mp4">
-    </audio>
+    <div class="eqLeft main">
+      <form id="leftEq">
+        <p>High</p>
+        <input
+          id="leftHigh"
+          type="range"
+          value="40"
+          mix="0"
+          max="80"
+          step="0.5">
+          <p>High Mid</p>
+        <input
+          id="leftHighMid"
+          type="range"
+          value="40"
+          mix="0"
+          max="80"
+          step="0.5">
+        <p>Low Mid</p>
+        <input
+          id="leftLowMid"
+          type="range"
+          value="40"
+          mix="0"
+          max="80"
+          step="0.5">
+          <p>Low</p>
+        <input
+          id="leftLow"
+          type="range"
+          value="40"
+          mix="0"
+          max="80"
+          step="0.5">
+      </form>
+    </div>
+  </div>
 
-    <!-- Mixer -->
 
-    <form id="leftEq">
-      <p>High</p>
-      <input
-        id="leftHigh"
-        type="range"
-        value="40"
-        mix="0"
-        max="80"
-        step="0.5">
-        <p>High Mid</p>
-      <input
-        id="leftHighMid"
-        type="range"
-        value="40"
-        mix="0"
-        max="80"
-        step="0.5">
-      <p>Low Mid</p>
-      <input
-        id="leftLowMid"
-        type="range"
-        value="40"
-        mix="0"
-        max="80"
-        step="0.5">
-        <p>Low</p>
-      <input
-        id="leftLow"
-        type="range"
-        value="40"
-        mix="0"
-        max="80"
-        step="0.5">
-    </form>
 
+
+  <div class="right">
+    <div class="eqRight">
+      <form id="RightEq">
+        <p>High</p>
+        <input
+          id="rightHigh"
+          type="range"
+          value="40"
+          mix="0"
+          max="80"
+          step="0.5">
+          <p>High Mid</p>
+        <input
+          id="rightHighMid"
+          type="range"
+          value="40"
+          mix="0"
+          max="80"
+          step="0.5">
+        <p>Low Mid</p>
+        <input
+          id="rightLowMid"
+          type="range"
+          value="40"
+          mix="0"
+          max="80"
+          step="0.5">
+          <p>Low</p>
+        <input
+          id="rightLow"
+          type="range"
+          value="40"
+          mix="0"
+          max="80"
+          step="0.5">
+      </form>
+    </div>
+
+    <div class="rightDeck main">
+      <form id="rightForm" onSubmit="return false">
+        <input 
+        id="rightQueue" 
+        type="text" 
+        value="Paste a YouTube link here!" 
+        onfocus="emptySearch(this)"
+        class="song">
+      </form>
+
+      <audio id="rightDeck" controls="true" width="300px" height="300px">
+        <source src="http://www.youtube-mp3.org/get?video_id=u4Dno4TDBoU&ts_create=1426033093&r=MTczLjI0Ny4xOTkuNDY%3D&h2=f97ade50c777ac293d8853cbefa25ec9&s=167490" type="audio/mp4">
+      </audio>
+    </div>
+
+  </div>
+
+  <div class="fader">
+    <div class="leftPitch pitch">
+      <form>
+        <input 
+        id="leftRate" 
+        type="range" 
+        value="1" 
+        min="0.92" 
+        max="1.08" 
+        step="0.0001">
+      </form>
+        <p>-8  Pitch  +8</p>
+    </div>
     <form>
       <p>Cross Fader</p>
       <input 
@@ -92,72 +145,24 @@
       max="1" 
       step="0.005" >
     </form>
-
-    <form id="RightEq">
-      <p>High</p>
-      <input
-        id="rightHigh"
-        type="range"
-        value="40"
-        mix="0"
-        max="80"
-        step="0.5">
-        <p>High Mid</p>
-      <input
-        id="rightHighMid"
-        type="range"
-        value="40"
-        mix="0"
-        max="80"
-        step="0.5">
-      <p>Low Mid</p>
-      <input
-        id="rightLowMid"
-        type="range"
-        value="40"
-        mix="0"
-        max="80"
-        step="0.5">
-        <p>Low</p>
-      <input
-        id="rightLow"
-        type="range"
-        value="40"
-        mix="0"
-        max="80"
-        step="0.5">
-    </form>
-
-
-    <!-- Right Deck -->
-
-    <form id="rightForm" onSubmit="return false">
-      <input 
-      id="rightQueue" 
-      type="text" 
-      value="Paste a YouTube link here!" 
-      onfocus="emptySearch(this)">
-      <p>Pick a song</p>
-    </form>
-
-    <audio id="rightDeck" controls="true" width="300px" height="300px">
-    	<source src="http://www.youtube-mp3.org/get?video_id=pz8Kp_yELg0&ts_create=1426017111&r=MTczLjI0Ny4xOTkuNDY%3D&h2=41545220eb1c0ba6a62f9c4d3b55d142&s=44124" type="audio/mp4">
-    </audio>
-
-    <form>
-      <input 
-      id="rightRate" 
-      type="range" 
-      value="1" 
-      min="0.92"
-      max=".08" 
-      step="0.005" >
-      <p>Pitch
-        <span id="currentRightRate">1</span>
-      </p>
-    </form>
+  <div class="rightPitch pitch">
+      <form>
+        <input 
+        id="rightRate" 
+        type="range" 
+        value="1" 
+        min="0.92"
+        max="1.08" 
+        step="0.0001">
+        <p>-8  Pitch  +8</p>
+      </form>
+    </div>
   </div>
+
+
   <script src="js/app.js"></script>
+  <script src="js/listeners.js"></script>
+  <script src="js/converter.js"></script>
   <script src="js/audio.js"></script>
 </body>
 

@@ -1,4 +1,4 @@
-var createSource = function(element) {
+app.createSource = function(element) {
   var source = app.context.createMediaElementSource(element);
 
   var gainNode = app.context.createGain();
@@ -34,5 +34,5 @@ var createSource = function(element) {
 }
 
 app.context = new (window.AudioContext || window.webkitAudioContext)();
-app.right.source = createSource(app.right.deck);
-app.left.source = createSource(app.left.deck);
+app.right.source = app.createSource(app.right.deck);
+app.left.source = app.createSource(app.left.deck);

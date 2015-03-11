@@ -8,8 +8,8 @@
   
 
 ## Summary ##
-  - Drop the bass with 4-band eq's
-  - Ride the pitch with super high resolution pitch faders
+  - Drop the bass with 4-band eq's and equal power crossfading
+  - Lock it in with high resolution pitch faders
   - Mix with tracks before you buy them
 
 ## Problem ##
