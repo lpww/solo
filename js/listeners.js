@@ -22,19 +22,6 @@ app.loadListeners = function(deck) {
   }, false);
 
   //Song select form listeners
-  left.form.addEventListener('click', function() {
-    var input = document.querySelector('#leftQueue');
-    if(input.value === 'Paste a YouTube link here!') {
-      input.value = '';
-    }
-  }, false);
-
-  right.form.addEventListener('click', function() {
-    var input = document.querySelector('#rightQueue');
-    if(input.value === 'Paste a YouTube link here!') {
-      input.value = '';
-    }
-  }, false);
 
   left.form.addEventListener("submit", function(e) {
     var form = document.getElementById('leftForm');
